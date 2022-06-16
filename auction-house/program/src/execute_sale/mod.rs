@@ -1,7 +1,11 @@
-use anchor_lang::{prelude::*, AnchorDeserialize};
-use solana_program::program_memory::sol_memset;
-
 use crate::{constants::*, errors::*, utils::*, AuctionHouse, AuthorityScope, *};
+use anchor_lang::{prelude::*, AnchorDeserialize};
+use solana_program::{
+    program_memory::{sol_memcmp, sol_memset},
+    pubkey::PUBKEY_BYTES,
+    sysvar,
+    sysvar::instructions::get_instruction_relative,
+};
 
 /// Accounts for the [`execute_sale` handler](auction_house/fn.execute_sale.html).
 #[derive(Accounts)]
@@ -387,6 +391,10 @@ pub struct AuctioneerExecuteSale<'info> {
     pub program_as_signer: UncheckedAccount<'info>,
 
     pub rent: Sysvar<'info, Rent>,
+
+    /// CHECK: account constraints checked in account trait
+    #[account(address = sysvar::instructions::id())]
+    instruction_sysvar_account: UncheckedAccount<'info>,
 }
 
 pub fn auctioneer_execute_sale<'info>(
@@ -731,6 +739,24 @@ fn auctioneer_execute_sale_logic<'info>(
         ],
         &[&program_as_signer_seeds],
     )?;
+
+    // TODO
+    // Open Market adds remaining accounts to distribute to Maker AND Taker instances
+    if ctx.remaining_accounts.len() > 0 {
+        let instruction_sysvar_account = &ctx.accounts.instruction_sysvar_account;
+        let instruction_sysvar_account_info = instruction_sysvar_account.to_account_info();
+        let current_ix = get_instruction_relative(0, &instruction_sysvar_account_info).unwrap();
+
+        // Only Open Market uses remaining accounts
+        if sol_memcmp(
+            &current_ix.program_id.as_ref(),
+            &OPEN_MARKET_ID.as_ref(),
+            PUBKEY_BYTES,
+        ) == 0
+        {
+            // Extra distribution logic for Maker (buying AH).
+        }
+    }
 
     let curr_seller_lamp = seller_trade_state.lamports();
     **seller_trade_state.lamports.borrow_mut() = 0;

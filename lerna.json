@@ -8,15 +8,21 @@
     "token-metadata/js",
     "metaplex/js",
     "auction-house/js",
-    "fixed-price-sale/js"
+    "fixed-price-sale/js",
+    "open-market/js"
   ],
   "useWorkspaces": true,
   "version": "independent",
   "command": {
     "version": {
-      "allowBranch": ["master"],
+      "allowBranch": [
+        "master"
+      ],
       "message": "chore: version updated packages",
-      "ignoreChanges": ["**/test/**", "**/*.md"]
+      "ignoreChanges": [
+        "**/test/**",
+        "**/*.md"
+      ]
     },
     "publish": {
       "registry": "https://registry.npmjs.org/"

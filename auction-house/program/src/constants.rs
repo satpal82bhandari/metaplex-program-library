@@ -1,3 +1,5 @@
+use solana_program::pubkey::Pubkey;
+
 pub const PREFIX: &str = "auction_house";
 pub const FEE_PAYER: &str = "fee_payer";
 pub const TREASURY: &str = "treasury";
@@ -6,6 +8,8 @@ pub const PURCHASE_RECEIPT_PREFIX: &str = "purchase_receipt";
 pub const BID_RECEIPT_PREFIX: &str = "bid_receipt";
 pub const LISTING_RECEIPT_PREFIX: &str = "listing_receipt";
 pub const AUCTIONEER: &str = "auctioneer";
+pub const OPEN_MARKET_ID: Pubkey =
+    solana_program::pubkey!("momVxrLmh5NmqHJ6bnPxYPapxRZxaAj7aFoVVioLfaW");
 pub const TRADE_STATE_SIZE: usize = 1;
 pub const MAX_NUM_SCOPES: usize = 7;
 pub const AUCTIONEER_SIZE: usize = 8 +                      // Anchor discriminator/sighash
