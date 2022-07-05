@@ -13,7 +13,7 @@ export * from './types';
 export const PROGRAM_ADDRESS = 'hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg';
 
 /**
- * Program publick key
+ * Program public key
  *
  * @category constants
  * @category generated

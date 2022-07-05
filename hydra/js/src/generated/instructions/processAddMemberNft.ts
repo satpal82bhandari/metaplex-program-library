@@ -23,7 +23,7 @@ export type ProcessAddMemberNftInstructionArgs = {
  * @category ProcessAddMemberNft
  * @category generated
  */
-const processAddMemberNftStruct = new beet.BeetArgsStruct<
+export const processAddMemberNftStruct = new beet.BeetArgsStruct<
   ProcessAddMemberNftInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -36,6 +36,12 @@ const processAddMemberNftStruct = new beet.BeetArgsStruct<
 );
 /**
  * Accounts required by the _processAddMemberNft_ instruction
+ *
+ * @property [_writable_, **signer**] authority
+ * @property [_writable_] fanout
+ * @property [_writable_] membershipAccount
+ * @property [] mint
+ * @property [] metadata
  * @category Instructions
  * @category ProcessAddMemberNft
  * @category generated
@@ -48,7 +54,7 @@ export type ProcessAddMemberNftInstructionAccounts = {
   metadata: web3.PublicKey;
 };
 
-const processAddMemberNftInstructionDiscriminator = [92, 255, 105, 209, 25, 41, 3, 7];
+export const processAddMemberNftInstructionDiscriminator = [92, 255, 105, 209, 25, 41, 3, 7];
 
 /**
  * Creates a _ProcessAddMemberNft_ instruction.

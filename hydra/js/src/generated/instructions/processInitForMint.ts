@@ -21,7 +21,7 @@ export type ProcessInitForMintInstructionArgs = {
  * @category ProcessInitForMint
  * @category generated
  */
-const processInitForMintStruct = new beet.BeetArgsStruct<
+export const processInitForMintStruct = new beet.BeetArgsStruct<
   ProcessInitForMintInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -34,6 +34,12 @@ const processInitForMintStruct = new beet.BeetArgsStruct<
 );
 /**
  * Accounts required by the _processInitForMint_ instruction
+ *
+ * @property [_writable_, **signer**] authority
+ * @property [_writable_] fanout
+ * @property [_writable_] fanoutForMint
+ * @property [_writable_] mintHoldingAccount
+ * @property [] mint
  * @category Instructions
  * @category ProcessInitForMint
  * @category generated
@@ -46,7 +52,7 @@ export type ProcessInitForMintInstructionAccounts = {
   mint: web3.PublicKey;
 };
 
-const processInitForMintInstructionDiscriminator = [140, 150, 232, 195, 93, 219, 35, 170];
+export const processInitForMintInstructionDiscriminator = [140, 150, 232, 195, 93, 219, 35, 170];
 
 /**
  * Creates a _ProcessInitForMint_ instruction.

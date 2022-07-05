@@ -22,7 +22,7 @@ export type ProcessDistributeTokenInstructionArgs = {
  * @category ProcessDistributeToken
  * @category generated
  */
-const processDistributeTokenStruct = new beet.BeetArgsStruct<
+export const processDistributeTokenStruct = new beet.BeetArgsStruct<
   ProcessDistributeTokenInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -35,6 +35,19 @@ const processDistributeTokenStruct = new beet.BeetArgsStruct<
 );
 /**
  * Accounts required by the _processDistributeToken_ instruction
+ *
+ * @property [**signer**] payer
+ * @property [_writable_] member
+ * @property [_writable_] membershipMintTokenAccount
+ * @property [_writable_] membershipVoucher
+ * @property [_writable_] fanout
+ * @property [_writable_] holdingAccount
+ * @property [_writable_] fanoutForMint
+ * @property [_writable_] fanoutForMintMembershipVoucher
+ * @property [] fanoutMint
+ * @property [_writable_] fanoutMintMemberTokenAccount
+ * @property [_writable_] membershipMint
+ * @property [_writable_] memberStakeAccount
  * @category Instructions
  * @category ProcessDistributeToken
  * @category generated
@@ -54,7 +67,7 @@ export type ProcessDistributeTokenInstructionAccounts = {
   memberStakeAccount: web3.PublicKey;
 };
 
-const processDistributeTokenInstructionDiscriminator = [126, 105, 46, 135, 28, 36, 117, 212];
+export const processDistributeTokenInstructionDiscriminator = [126, 105, 46, 135, 28, 36, 117, 212];
 
 /**
  * Creates a _ProcessDistributeToken_ instruction.

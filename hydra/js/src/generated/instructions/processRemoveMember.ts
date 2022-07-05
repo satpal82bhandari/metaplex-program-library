@@ -10,52 +10,52 @@ import * as web3 from '@solana/web3.js';
 
 /**
  * @category Instructions
- * @category ProcessSignMetadata
+ * @category ProcessRemoveMember
  * @category generated
  */
-export const processSignMetadataStruct = new beet.BeetArgsStruct<{
+export const processRemoveMemberStruct = new beet.BeetArgsStruct<{
   instructionDiscriminator: number[] /* size: 8 */;
 }>(
   [['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)]],
-  'ProcessSignMetadataInstructionArgs',
+  'ProcessRemoveMemberInstructionArgs',
 );
 /**
- * Accounts required by the _processSignMetadata_ instruction
+ * Accounts required by the _processRemoveMember_ instruction
  *
  * @property [_writable_, **signer**] authority
- * @property [] fanout
- * @property [] holdingAccount
- * @property [_writable_] metadata
- * @property [] tokenMetadataProgram
+ * @property [] member
+ * @property [_writable_] fanout
+ * @property [_writable_] membershipAccount
+ * @property [_writable_] destination
  * @category Instructions
- * @category ProcessSignMetadata
+ * @category ProcessRemoveMember
  * @category generated
  */
-export type ProcessSignMetadataInstructionAccounts = {
+export type ProcessRemoveMemberInstructionAccounts = {
   authority: web3.PublicKey;
+  member: web3.PublicKey;
   fanout: web3.PublicKey;
-  holdingAccount: web3.PublicKey;
-  metadata: web3.PublicKey;
-  tokenMetadataProgram: web3.PublicKey;
+  membershipAccount: web3.PublicKey;
+  destination: web3.PublicKey;
 };
 
-export const processSignMetadataInstructionDiscriminator = [188, 67, 163, 49, 0, 150, 63, 89];
+export const processRemoveMemberInstructionDiscriminator = [9, 45, 36, 163, 245, 40, 150, 85];
 
 /**
- * Creates a _ProcessSignMetadata_ instruction.
+ * Creates a _ProcessRemoveMember_ instruction.
  *
  * @param accounts that will be accessed while the instruction is processed
  * @category Instructions
- * @category ProcessSignMetadata
+ * @category ProcessRemoveMember
  * @category generated
  */
-export function createProcessSignMetadataInstruction(
-  accounts: ProcessSignMetadataInstructionAccounts,
+export function createProcessRemoveMemberInstruction(
+  accounts: ProcessRemoveMemberInstructionAccounts,
 ) {
-  const { authority, fanout, holdingAccount, metadata, tokenMetadataProgram } = accounts;
+  const { authority, member, fanout, membershipAccount, destination } = accounts;
 
-  const [data] = processSignMetadataStruct.serialize({
-    instructionDiscriminator: processSignMetadataInstructionDiscriminator,
+  const [data] = processRemoveMemberStruct.serialize({
+    instructionDiscriminator: processRemoveMemberInstructionDiscriminator,
   });
   const keys: web3.AccountMeta[] = [
     {
@@ -64,23 +64,23 @@ export function createProcessSignMetadataInstruction(
       isSigner: true,
     },
     {
+      pubkey: member,
+      isWritable: false,
+      isSigner: false,
+    },
+    {
       pubkey: fanout,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: holdingAccount,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: metadata,
       isWritable: true,
       isSigner: false,
     },
     {
-      pubkey: tokenMetadataProgram,
-      isWritable: false,
+      pubkey: membershipAccount,
+      isWritable: true,
+      isSigner: false,
+    },
+    {
+      pubkey: destination,
+      isWritable: true,
       isSigner: false,
     },
   ];

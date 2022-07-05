@@ -137,8 +137,28 @@ export class FanoutMint implements FanoutMintArgs {
       mint: this.mint.toBase58(),
       fanout: this.fanout.toBase58(),
       tokenAccount: this.tokenAccount.toBase58(),
-      totalInflow: this.totalInflow,
-      lastSnapshotAmount: this.lastSnapshotAmount,
+      totalInflow: (() => {
+        const x = <{ toNumber: () => number }>this.totalInflow;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
+      lastSnapshotAmount: (() => {
+        const x = <{ toNumber: () => number }>this.lastSnapshotAmount;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
       bumpSeed: this.bumpSeed,
     };
   }

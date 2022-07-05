@@ -14,7 +14,7 @@ import * as web3 from '@solana/web3.js';
  * @category ProcessUnstake
  * @category generated
  */
-const processUnstakeStruct = new beet.BeetArgsStruct<{
+export const processUnstakeStruct = new beet.BeetArgsStruct<{
   instructionDiscriminator: number[] /* size: 8 */;
 }>(
   [['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)]],
@@ -22,6 +22,14 @@ const processUnstakeStruct = new beet.BeetArgsStruct<{
 );
 /**
  * Accounts required by the _processUnstake_ instruction
+ *
+ * @property [_writable_, **signer**] member
+ * @property [_writable_] fanout
+ * @property [_writable_] membershipVoucher
+ * @property [_writable_] membershipMint
+ * @property [_writable_] membershipMintTokenAccount
+ * @property [_writable_] memberStakeAccount
+ * @property [] instructions
  * @category Instructions
  * @category ProcessUnstake
  * @category generated
@@ -36,13 +44,12 @@ export type ProcessUnstakeInstructionAccounts = {
   instructions: web3.PublicKey;
 };
 
-const processUnstakeInstructionDiscriminator = [217, 160, 136, 174, 149, 62, 79, 133];
+export const processUnstakeInstructionDiscriminator = [217, 160, 136, 174, 149, 62, 79, 133];
 
 /**
  * Creates a _ProcessUnstake_ instruction.
  *
  * @param accounts that will be accessed while the instruction is processed
- *
  * @category Instructions
  * @category ProcessUnstake
  * @category generated

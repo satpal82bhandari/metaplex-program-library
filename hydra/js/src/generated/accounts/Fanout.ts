@@ -161,13 +161,63 @@ export class Fanout implements FanoutArgs {
       authority: this.authority.toBase58(),
       name: this.name,
       accountKey: this.accountKey.toBase58(),
-      totalShares: this.totalShares,
-      totalMembers: this.totalMembers,
-      totalInflow: this.totalInflow,
-      lastSnapshotAmount: this.lastSnapshotAmount,
+      totalShares: (() => {
+        const x = <{ toNumber: () => number }>this.totalShares;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
+      totalMembers: (() => {
+        const x = <{ toNumber: () => number }>this.totalMembers;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
+      totalInflow: (() => {
+        const x = <{ toNumber: () => number }>this.totalInflow;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
+      lastSnapshotAmount: (() => {
+        const x = <{ toNumber: () => number }>this.lastSnapshotAmount;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
       bumpSeed: this.bumpSeed,
       accountOwnerBumpSeed: this.accountOwnerBumpSeed,
-      totalAvailableShares: this.totalAvailableShares,
+      totalAvailableShares: (() => {
+        const x = <{ toNumber: () => number }>this.totalAvailableShares;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
       membershipModel: 'MembershipModel.' + MembershipModel[this.membershipModel],
       membershipMint: this.membershipMint,
       totalStakedShares: this.totalStakedShares,

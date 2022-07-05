@@ -22,7 +22,7 @@ export type ProcessDistributeWalletInstructionArgs = {
  * @category ProcessDistributeWallet
  * @category generated
  */
-const processDistributeWalletStruct = new beet.BeetArgsStruct<
+export const processDistributeWalletStruct = new beet.BeetArgsStruct<
   ProcessDistributeWalletInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -35,6 +35,16 @@ const processDistributeWalletStruct = new beet.BeetArgsStruct<
 );
 /**
  * Accounts required by the _processDistributeWallet_ instruction
+ *
+ * @property [**signer**] payer
+ * @property [_writable_] member
+ * @property [_writable_] membershipVoucher
+ * @property [_writable_] fanout
+ * @property [_writable_] holdingAccount
+ * @property [_writable_] fanoutForMint
+ * @property [_writable_] fanoutForMintMembershipVoucher
+ * @property [] fanoutMint
+ * @property [_writable_] fanoutMintMemberTokenAccount
  * @category Instructions
  * @category ProcessDistributeWallet
  * @category generated
@@ -51,7 +61,9 @@ export type ProcessDistributeWalletInstructionAccounts = {
   fanoutMintMemberTokenAccount: web3.PublicKey;
 };
 
-const processDistributeWalletInstructionDiscriminator = [252, 168, 167, 66, 40, 201, 182, 163];
+export const processDistributeWalletInstructionDiscriminator = [
+  252, 168, 167, 66, 40, 201, 182, 163,
+];
 
 /**
  * Creates a _ProcessDistributeWallet_ instruction.

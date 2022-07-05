@@ -22,7 +22,7 @@ export type ProcessDistributeNftInstructionArgs = {
  * @category ProcessDistributeNft
  * @category generated
  */
-const processDistributeNftStruct = new beet.BeetArgsStruct<
+export const processDistributeNftStruct = new beet.BeetArgsStruct<
   ProcessDistributeNftInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -35,6 +35,18 @@ const processDistributeNftStruct = new beet.BeetArgsStruct<
 );
 /**
  * Accounts required by the _processDistributeNft_ instruction
+ *
+ * @property [**signer**] payer
+ * @property [_writable_] member
+ * @property [_writable_] membershipMintTokenAccount
+ * @property [] membershipKey
+ * @property [_writable_] membershipVoucher
+ * @property [_writable_] fanout
+ * @property [_writable_] holdingAccount
+ * @property [_writable_] fanoutForMint
+ * @property [_writable_] fanoutForMintMembershipVoucher
+ * @property [] fanoutMint
+ * @property [_writable_] fanoutMintMemberTokenAccount
  * @category Instructions
  * @category ProcessDistributeNft
  * @category generated
@@ -53,7 +65,7 @@ export type ProcessDistributeNftInstructionAccounts = {
   fanoutMintMemberTokenAccount: web3.PublicKey;
 };
 
-const processDistributeNftInstructionDiscriminator = [108, 240, 68, 81, 144, 83, 58, 153];
+export const processDistributeNftInstructionDiscriminator = [108, 240, 68, 81, 144, 83, 58, 153];
 
 /**
  * Creates a _ProcessDistributeNft_ instruction.

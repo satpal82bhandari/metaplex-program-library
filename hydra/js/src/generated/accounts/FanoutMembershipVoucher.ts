@@ -141,11 +141,41 @@ export class FanoutMembershipVoucher implements FanoutMembershipVoucherArgs {
   pretty() {
     return {
       fanout: this.fanout.toBase58(),
-      totalInflow: this.totalInflow,
-      lastInflow: this.lastInflow,
+      totalInflow: (() => {
+        const x = <{ toNumber: () => number }>this.totalInflow;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
+      lastInflow: (() => {
+        const x = <{ toNumber: () => number }>this.lastInflow;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
       bumpSeed: this.bumpSeed,
       membershipKey: this.membershipKey.toBase58(),
-      shares: this.shares,
+      shares: (() => {
+        const x = <{ toNumber: () => number }>this.shares;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
     };
   }
 }

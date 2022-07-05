@@ -21,7 +21,7 @@ export type ProcessTransferSharesInstructionArgs = {
  * @category ProcessTransferShares
  * @category generated
  */
-const processTransferSharesStruct = new beet.BeetArgsStruct<
+export const processTransferSharesStruct = new beet.BeetArgsStruct<
   ProcessTransferSharesInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -34,6 +34,13 @@ const processTransferSharesStruct = new beet.BeetArgsStruct<
 );
 /**
  * Accounts required by the _processTransferShares_ instruction
+ *
+ * @property [**signer**] authority
+ * @property [] fromMember
+ * @property [] toMember
+ * @property [_writable_] fanout
+ * @property [_writable_] fromMembershipAccount
+ * @property [_writable_] toMembershipAccount
  * @category Instructions
  * @category ProcessTransferShares
  * @category generated
@@ -47,7 +54,7 @@ export type ProcessTransferSharesInstructionAccounts = {
   toMembershipAccount: web3.PublicKey;
 };
 
-const processTransferSharesInstructionDiscriminator = [195, 175, 36, 50, 101, 22, 28, 87];
+export const processTransferSharesInstructionDiscriminator = [195, 175, 36, 50, 101, 22, 28, 87];
 
 /**
  * Creates a _ProcessTransferShares_ instruction.

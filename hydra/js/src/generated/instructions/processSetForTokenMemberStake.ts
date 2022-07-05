@@ -22,7 +22,7 @@ export type ProcessSetForTokenMemberStakeInstructionArgs = {
  * @category ProcessSetForTokenMemberStake
  * @category generated
  */
-const processSetForTokenMemberStakeStruct = new beet.BeetArgsStruct<
+export const processSetForTokenMemberStakeStruct = new beet.BeetArgsStruct<
   ProcessSetForTokenMemberStakeInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -35,6 +35,14 @@ const processSetForTokenMemberStakeStruct = new beet.BeetArgsStruct<
 );
 /**
  * Accounts required by the _processSetForTokenMemberStake_ instruction
+ *
+ * @property [_writable_, **signer**] authority
+ * @property [] member
+ * @property [_writable_] fanout
+ * @property [_writable_] membershipVoucher
+ * @property [_writable_] membershipMint
+ * @property [_writable_] membershipMintTokenAccount
+ * @property [_writable_] memberStakeAccount
  * @category Instructions
  * @category ProcessSetForTokenMemberStake
  * @category generated
@@ -49,7 +57,9 @@ export type ProcessSetForTokenMemberStakeInstructionAccounts = {
   memberStakeAccount: web3.PublicKey;
 };
 
-const processSetForTokenMemberStakeInstructionDiscriminator = [210, 40, 6, 254, 2, 80, 154, 109];
+export const processSetForTokenMemberStakeInstructionDiscriminator = [
+  210, 40, 6, 254, 2, 80, 154, 109,
+];
 
 /**
  * Creates a _ProcessSetForTokenMemberStake_ instruction.

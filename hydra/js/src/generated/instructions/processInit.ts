@@ -25,7 +25,7 @@ export type ProcessInitInstructionArgs = {
  * @category ProcessInit
  * @category generated
  */
-const processInitStruct = new beet.FixableBeetArgsStruct<
+export const processInitStruct = new beet.FixableBeetArgsStruct<
   ProcessInitInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -39,6 +39,11 @@ const processInitStruct = new beet.FixableBeetArgsStruct<
 );
 /**
  * Accounts required by the _processInit_ instruction
+ *
+ * @property [_writable_, **signer**] authority
+ * @property [_writable_] fanout
+ * @property [_writable_] holdingAccount
+ * @property [_writable_] membershipMint
  * @category Instructions
  * @category ProcessInit
  * @category generated
@@ -50,7 +55,7 @@ export type ProcessInitInstructionAccounts = {
   membershipMint: web3.PublicKey;
 };
 
-const processInitInstructionDiscriminator = [172, 5, 165, 143, 86, 159, 50, 237];
+export const processInitInstructionDiscriminator = [172, 5, 165, 143, 86, 159, 50, 237];
 
 /**
  * Creates a _ProcessInit_ instruction.

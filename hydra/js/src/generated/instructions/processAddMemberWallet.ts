@@ -23,7 +23,7 @@ export type ProcessAddMemberWalletInstructionArgs = {
  * @category ProcessAddMemberWallet
  * @category generated
  */
-const processAddMemberWalletStruct = new beet.BeetArgsStruct<
+export const processAddMemberWalletStruct = new beet.BeetArgsStruct<
   ProcessAddMemberWalletInstructionArgs & {
     instructionDiscriminator: number[] /* size: 8 */;
   }
@@ -36,6 +36,11 @@ const processAddMemberWalletStruct = new beet.BeetArgsStruct<
 );
 /**
  * Accounts required by the _processAddMemberWallet_ instruction
+ *
+ * @property [_writable_, **signer**] authority
+ * @property [] member
+ * @property [_writable_] fanout
+ * @property [_writable_] membershipAccount
  * @category Instructions
  * @category ProcessAddMemberWallet
  * @category generated
@@ -47,7 +52,7 @@ export type ProcessAddMemberWalletInstructionAccounts = {
   membershipAccount: web3.PublicKey;
 };
 
-const processAddMemberWalletInstructionDiscriminator = [201, 9, 59, 128, 69, 117, 220, 235];
+export const processAddMemberWalletInstructionDiscriminator = [201, 9, 59, 128, 69, 117, 220, 235];
 
 /**
  * Creates a _ProcessAddMemberWallet_ instruction.

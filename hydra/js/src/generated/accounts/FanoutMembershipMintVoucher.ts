@@ -136,7 +136,17 @@ export class FanoutMembershipMintVoucher implements FanoutMembershipMintVoucherA
     return {
       fanout: this.fanout.toBase58(),
       fanoutMint: this.fanoutMint.toBase58(),
-      lastInflow: this.lastInflow,
+      lastInflow: (() => {
+        const x = <{ toNumber: () => number }>this.lastInflow;
+        if (typeof x.toNumber === 'function') {
+          try {
+            return x.toNumber();
+          } catch (_) {
+            return x;
+          }
+        }
+        return x;
+      })(),
       bumpSeed: this.bumpSeed,
     };
   }
