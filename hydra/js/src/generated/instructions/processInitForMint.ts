@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from "@metaplex-foundation/beet";
-import * as web3 from "@solana/web3.js";
+import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js';
 
 /**
  * @category Instructions
@@ -27,10 +27,10 @@ const processInitForMintStruct = new beet.BeetArgsStruct<
   }
 >(
   [
-    ["instructionDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["bumpSeed", beet.u8],
+    ['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['bumpSeed', beet.u8],
   ],
-  "ProcessInitForMintInstructionArgs"
+  'ProcessInitForMintInstructionArgs',
 );
 /**
  * Accounts required by the _processInitForMint_ instruction
@@ -46,9 +46,7 @@ export type ProcessInitForMintInstructionAccounts = {
   mint: web3.PublicKey;
 };
 
-const processInitForMintInstructionDiscriminator = [
-  140, 150, 232, 195, 93, 219, 35, 170,
-];
+const processInitForMintInstructionDiscriminator = [140, 150, 232, 195, 93, 219, 35, 170];
 
 /**
  * Creates a _ProcessInitForMint_ instruction.
@@ -62,10 +60,9 @@ const processInitForMintInstructionDiscriminator = [
  */
 export function createProcessInitForMintInstruction(
   accounts: ProcessInitForMintInstructionAccounts,
-  args: ProcessInitForMintInstructionArgs
+  args: ProcessInitForMintInstructionArgs,
 ) {
-  const { authority, fanout, fanoutForMint, mintHoldingAccount, mint } =
-    accounts;
+  const { authority, fanout, fanoutForMint, mintHoldingAccount, mint } = accounts;
 
   const [data] = processInitForMintStruct.serialize({
     instructionDiscriminator: processInitForMintInstructionDiscriminator,
@@ -110,9 +107,7 @@ export function createProcessInitForMintInstruction(
   ];
 
   const ix = new web3.TransactionInstruction({
-    programId: new web3.PublicKey(
-      "hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg"
-    ),
+    programId: new web3.PublicKey('hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg'),
     keys,
     data,
   });

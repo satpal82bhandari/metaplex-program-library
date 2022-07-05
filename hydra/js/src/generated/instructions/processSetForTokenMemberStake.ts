@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from "@solana/spl-token";
-import * as beet from "@metaplex-foundation/beet";
-import * as web3 from "@solana/web3.js";
+import * as splToken from '@solana/spl-token';
+import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js';
 
 /**
  * @category Instructions
@@ -28,10 +28,10 @@ const processSetForTokenMemberStakeStruct = new beet.BeetArgsStruct<
   }
 >(
   [
-    ["instructionDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["shares", beet.u64],
+    ['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['shares', beet.u64],
   ],
-  "ProcessSetForTokenMemberStakeInstructionArgs"
+  'ProcessSetForTokenMemberStakeInstructionArgs',
 );
 /**
  * Accounts required by the _processSetForTokenMemberStake_ instruction
@@ -49,9 +49,7 @@ export type ProcessSetForTokenMemberStakeInstructionAccounts = {
   memberStakeAccount: web3.PublicKey;
 };
 
-const processSetForTokenMemberStakeInstructionDiscriminator = [
-  210, 40, 6, 254, 2, 80, 154, 109,
-];
+const processSetForTokenMemberStakeInstructionDiscriminator = [210, 40, 6, 254, 2, 80, 154, 109];
 
 /**
  * Creates a _ProcessSetForTokenMemberStake_ instruction.
@@ -65,7 +63,7 @@ const processSetForTokenMemberStakeInstructionDiscriminator = [
  */
 export function createProcessSetForTokenMemberStakeInstruction(
   accounts: ProcessSetForTokenMemberStakeInstructionAccounts,
-  args: ProcessSetForTokenMemberStakeInstructionArgs
+  args: ProcessSetForTokenMemberStakeInstructionArgs,
 ) {
   const {
     authority,
@@ -78,8 +76,7 @@ export function createProcessSetForTokenMemberStakeInstruction(
   } = accounts;
 
   const [data] = processSetForTokenMemberStakeStruct.serialize({
-    instructionDiscriminator:
-      processSetForTokenMemberStakeInstructionDiscriminator,
+    instructionDiscriminator: processSetForTokenMemberStakeInstructionDiscriminator,
     ...args,
   });
   const keys: web3.AccountMeta[] = [
@@ -131,9 +128,7 @@ export function createProcessSetForTokenMemberStakeInstruction(
   ];
 
   const ix = new web3.TransactionInstruction({
-    programId: new web3.PublicKey(
-      "hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg"
-    ),
+    programId: new web3.PublicKey('hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg'),
     keys,
     data,
   });

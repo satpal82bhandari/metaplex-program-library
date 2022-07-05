@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // TODO: Go back to anchor once they handle:
 // Error: Raw transaction 4nZwiENzNwKLfCBtDirAr5xE71GUqsNKsUNafSUHiEUkWhqbVgEmximswnDFp4ZFFy5C4NXJ75qCKP6nnWBSmFey failed ({"err":{"InstructionError":[4,{"Custom":1}]}})
 
-import { errorFromCode } from "./generated/errors";
+import { errorFromCode } from './generated/errors';
 
 export const LangErrorCode = {
   // Instructions.
@@ -49,115 +50,86 @@ export const LangErrorCode = {
 };
 
 export const SystemErrorMessage = new Map([
-  [1, "Insufficient balance."],
-  [2, "Invalid instruction data."],
-  [3, "Invalid account data"],
-  [4, "Account data too small"],
-  [5, "Insufficient funds"],
-  [6, "Incorrect prgoram id"],
-  [7, "Missing required signature"],
-  [8, "Account already initialized"],
-  [9, "Attempt to operate on an account that was not yet initialized"],
-  [10, "Not enough account keys provided"],
-  [11, "Account borrow failed, already borrowed"],
-  [12, "Max seed length exceeded"],
-  [13, "Invalid seeds"],
-  [14, "Borsh IO Error"],
-  [15, "Account not rent exempt"],
+  [1, 'Insufficient balance.'],
+  [2, 'Invalid instruction data.'],
+  [3, 'Invalid account data'],
+  [4, 'Account data too small'],
+  [5, 'Insufficient funds'],
+  [6, 'Incorrect prgoram id'],
+  [7, 'Missing required signature'],
+  [8, 'Account already initialized'],
+  [9, 'Attempt to operate on an account that was not yet initialized'],
+  [10, 'Not enough account keys provided'],
+  [11, 'Account borrow failed, already borrowed'],
+  [12, 'Max seed length exceeded'],
+  [13, 'Invalid seeds'],
+  [14, 'Borsh IO Error'],
+  [15, 'Account not rent exempt'],
 ]);
 
 export const LangErrorMessage = new Map([
   // Instructions.
-  [
-    LangErrorCode.InstructionMissing,
-    "8 byte instruction identifier not provided",
-  ],
-  [
-    LangErrorCode.InstructionFallbackNotFound,
-    "Fallback functions are not supported",
-  ],
+  [LangErrorCode.InstructionMissing, '8 byte instruction identifier not provided'],
+  [LangErrorCode.InstructionFallbackNotFound, 'Fallback functions are not supported'],
   [
     LangErrorCode.InstructionDidNotDeserialize,
-    "The program could not deserialize the given instruction",
+    'The program could not deserialize the given instruction',
   ],
   [
     LangErrorCode.InstructionDidNotSerialize,
-    "The program could not serialize the given instruction",
+    'The program could not serialize the given instruction',
   ],
 
   // Idl instructions.
-  [
-    LangErrorCode.IdlInstructionStub,
-    "The program was compiled without idl instructions",
-  ],
+  [LangErrorCode.IdlInstructionStub, 'The program was compiled without idl instructions'],
   [
     LangErrorCode.IdlInstructionInvalidProgram,
-    "The transaction was given an invalid program for the IDL instruction",
+    'The transaction was given an invalid program for the IDL instruction',
   ],
 
   // Constraints.
-  [LangErrorCode.ConstraintMut, "A mut constraint was violated"],
-  [LangErrorCode.ConstraintHasOne, "A has_one constraint was violated"],
-  [LangErrorCode.ConstraintSigner, "A signer constraint was violated"],
-  [LangErrorCode.ConstraintRaw, "A raw constraint was violated"],
-  [LangErrorCode.ConstraintOwner, "An owner constraint was violated"],
-  [LangErrorCode.ConstraintRentExempt, "A rent exempt constraint was violated"],
-  [LangErrorCode.ConstraintSeeds, "A seeds constraint was violated"],
-  [LangErrorCode.ConstraintExecutable, "An executable constraint was violated"],
-  [LangErrorCode.ConstraintState, "A state constraint was violated"],
-  [LangErrorCode.ConstraintAssociated, "An associated constraint was violated"],
-  [
-    LangErrorCode.ConstraintAssociatedInit,
-    "An associated init constraint was violated",
-  ],
-  [LangErrorCode.ConstraintClose, "A close constraint was violated"],
-  [LangErrorCode.ConstraintAddress, "An address constraint was violated"],
+  [LangErrorCode.ConstraintMut, 'A mut constraint was violated'],
+  [LangErrorCode.ConstraintHasOne, 'A has_one constraint was violated'],
+  [LangErrorCode.ConstraintSigner, 'A signer constraint was violated'],
+  [LangErrorCode.ConstraintRaw, 'A raw constraint was violated'],
+  [LangErrorCode.ConstraintOwner, 'An owner constraint was violated'],
+  [LangErrorCode.ConstraintRentExempt, 'A rent exempt constraint was violated'],
+  [LangErrorCode.ConstraintSeeds, 'A seeds constraint was violated'],
+  [LangErrorCode.ConstraintExecutable, 'An executable constraint was violated'],
+  [LangErrorCode.ConstraintState, 'A state constraint was violated'],
+  [LangErrorCode.ConstraintAssociated, 'An associated constraint was violated'],
+  [LangErrorCode.ConstraintAssociatedInit, 'An associated init constraint was violated'],
+  [LangErrorCode.ConstraintClose, 'A close constraint was violated'],
+  [LangErrorCode.ConstraintAddress, 'An address constraint was violated'],
 
   // Accounts.
   [
     LangErrorCode.AccountDiscriminatorAlreadySet,
-    "The account discriminator was already set on this account",
+    'The account discriminator was already set on this account',
   ],
-  [
-    LangErrorCode.AccountDiscriminatorNotFound,
-    "No 8 byte discriminator was found on the account",
-  ],
+  [LangErrorCode.AccountDiscriminatorNotFound, 'No 8 byte discriminator was found on the account'],
   [
     LangErrorCode.AccountDiscriminatorMismatch,
-    "8 byte discriminator did not match what was expected",
+    '8 byte discriminator did not match what was expected',
   ],
-  [LangErrorCode.AccountDidNotDeserialize, "Failed to deserialize the account"],
-  [LangErrorCode.AccountDidNotSerialize, "Failed to serialize the account"],
-  [
-    LangErrorCode.AccountNotEnoughKeys,
-    "Not enough account keys given to the instruction",
-  ],
-  [LangErrorCode.AccountNotMutable, "The given account is not mutable"],
-  [
-    LangErrorCode.AccountNotProgramOwned,
-    "The given account is not owned by the executing program",
-  ],
-  [LangErrorCode.InvalidProgramId, "Program ID was not as expected"],
-  [
-    LangErrorCode.InvalidProgramIdExecutable,
-    "Program account is not executable",
-  ],
+  [LangErrorCode.AccountDidNotDeserialize, 'Failed to deserialize the account'],
+  [LangErrorCode.AccountDidNotSerialize, 'Failed to serialize the account'],
+  [LangErrorCode.AccountNotEnoughKeys, 'Not enough account keys given to the instruction'],
+  [LangErrorCode.AccountNotMutable, 'The given account is not mutable'],
+  [LangErrorCode.AccountNotProgramOwned, 'The given account is not owned by the executing program'],
+  [LangErrorCode.InvalidProgramId, 'Program ID was not as expected'],
+  [LangErrorCode.InvalidProgramIdExecutable, 'Program account is not executable'],
 
   // State.
-  [
-    LangErrorCode.StateInvalidAddress,
-    "The given state account does not have the correct address",
-  ],
+  [LangErrorCode.StateInvalidAddress, 'The given state account does not have the correct address'],
 
   // Misc.
-  [
-    LangErrorCode.Deprecated,
-    "The API being used is deprecated and should no longer be used",
-  ],
+  [LangErrorCode.Deprecated, 'The API being used is deprecated and should no longer be used'],
 ]);
 
 // An error from a user defined program.
 export class ProgramError {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   constructor(readonly code: number, readonly msg: string, ...params: any[]) {}
 
   public static parse(err: any): ProgramError | null {
@@ -171,7 +143,7 @@ export class ProgramError {
     if (errorCode == null) {
       // TODO: don't rely on the error string. web3.js should preserve the error
       //       code information instead of giving us an untyped string.
-      let components = err.toString().split("custom program error: ");
+      const components = err.toString().split('custom program error: ');
       if (errorCode == null && components.length !== 2) {
         return null;
       }
@@ -182,12 +154,12 @@ export class ProgramError {
         return null;
       }
     }
-    let errorMsg =
+    const errorMsg =
       errorFromCode(errorCode)?.toString() ||
       LangErrorMessage.get(errorCode) ||
       SystemErrorMessage.get(errorCode);
     if (errorMsg !== undefined) {
-      return new ProgramError(errorCode, errorMsg, errorCode + ": " + errorMsg);
+      return new ProgramError(errorCode, errorMsg, errorCode + ': ' + errorMsg);
     }
 
     // Unable to parse the error. Just return the untranslated error.

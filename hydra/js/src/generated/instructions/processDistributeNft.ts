@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from "@solana/spl-token";
-import * as beet from "@metaplex-foundation/beet";
-import * as web3 from "@solana/web3.js";
+import * as splToken from '@solana/spl-token';
+import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js';
 
 /**
  * @category Instructions
@@ -28,10 +28,10 @@ const processDistributeNftStruct = new beet.BeetArgsStruct<
   }
 >(
   [
-    ["instructionDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["distributeForMint", beet.bool],
+    ['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['distributeForMint', beet.bool],
   ],
-  "ProcessDistributeNftInstructionArgs"
+  'ProcessDistributeNftInstructionArgs',
 );
 /**
  * Accounts required by the _processDistributeNft_ instruction
@@ -53,9 +53,7 @@ export type ProcessDistributeNftInstructionAccounts = {
   fanoutMintMemberTokenAccount: web3.PublicKey;
 };
 
-const processDistributeNftInstructionDiscriminator = [
-  108, 240, 68, 81, 144, 83, 58, 153,
-];
+const processDistributeNftInstructionDiscriminator = [108, 240, 68, 81, 144, 83, 58, 153];
 
 /**
  * Creates a _ProcessDistributeNft_ instruction.
@@ -69,7 +67,7 @@ const processDistributeNftInstructionDiscriminator = [
  */
 export function createProcessDistributeNftInstruction(
   accounts: ProcessDistributeNftInstructionAccounts,
-  args: ProcessDistributeNftInstructionArgs
+  args: ProcessDistributeNftInstructionArgs,
 ) {
   const {
     payer,
@@ -163,9 +161,7 @@ export function createProcessDistributeNftInstruction(
   ];
 
   const ix = new web3.TransactionInstruction({
-    programId: new web3.PublicKey(
-      "hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg"
-    ),
+    programId: new web3.PublicKey('hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg'),
     keys,
     data,
   });

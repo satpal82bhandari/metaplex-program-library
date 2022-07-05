@@ -5,14 +5,11 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from "@solana/spl-token";
-import * as beet from "@metaplex-foundation/beet";
-import * as web3 from "@solana/web3.js";
-import {
-  InitializeFanoutArgs,
-  initializeFanoutArgsBeet,
-} from "../types/InitializeFanoutArgs";
-import { MembershipModel, membershipModelBeet } from "../types/MembershipModel";
+import * as splToken from '@solana/spl-token';
+import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js';
+import { InitializeFanoutArgs, initializeFanoutArgsBeet } from '../types/InitializeFanoutArgs';
+import { MembershipModel, membershipModelBeet } from '../types/MembershipModel';
 
 /**
  * @category Instructions
@@ -34,11 +31,11 @@ const processInitStruct = new beet.FixableBeetArgsStruct<
   }
 >(
   [
-    ["instructionDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["args", initializeFanoutArgsBeet],
-    ["model", membershipModelBeet],
+    ['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['args', initializeFanoutArgsBeet],
+    ['model', membershipModelBeet],
   ],
-  "ProcessInitInstructionArgs"
+  'ProcessInitInstructionArgs',
 );
 /**
  * Accounts required by the _processInit_ instruction
@@ -53,9 +50,7 @@ export type ProcessInitInstructionAccounts = {
   membershipMint: web3.PublicKey;
 };
 
-const processInitInstructionDiscriminator = [
-  172, 5, 165, 143, 86, 159, 50, 237,
-];
+const processInitInstructionDiscriminator = [172, 5, 165, 143, 86, 159, 50, 237];
 
 /**
  * Creates a _ProcessInit_ instruction.
@@ -69,7 +64,7 @@ const processInitInstructionDiscriminator = [
  */
 export function createProcessInitInstruction(
   accounts: ProcessInitInstructionAccounts,
-  args: ProcessInitInstructionArgs
+  args: ProcessInitInstructionArgs,
 ) {
   const { authority, fanout, holdingAccount, membershipMint } = accounts;
 
@@ -116,9 +111,7 @@ export function createProcessInitInstruction(
   ];
 
   const ix = new web3.TransactionInstruction({
-    programId: new web3.PublicKey(
-      "hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg"
-    ),
+    programId: new web3.PublicKey('hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg'),
     keys,
     data,
   });

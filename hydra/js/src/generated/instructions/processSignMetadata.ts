@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from "@metaplex-foundation/beet";
-import * as web3 from "@solana/web3.js";
+import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js';
 
 /**
  * @category Instructions
@@ -16,8 +16,8 @@ import * as web3 from "@solana/web3.js";
 const processSignMetadataStruct = new beet.BeetArgsStruct<{
   instructionDiscriminator: number[] /* size: 8 */;
 }>(
-  [["instructionDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)]],
-  "ProcessSignMetadataInstructionArgs"
+  [['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)]],
+  'ProcessSignMetadataInstructionArgs',
 );
 /**
  * Accounts required by the _processSignMetadata_ instruction
@@ -33,9 +33,7 @@ export type ProcessSignMetadataInstructionAccounts = {
   tokenMetadataProgram: web3.PublicKey;
 };
 
-const processSignMetadataInstructionDiscriminator = [
-  188, 67, 163, 49, 0, 150, 63, 89,
-];
+const processSignMetadataInstructionDiscriminator = [188, 67, 163, 49, 0, 150, 63, 89];
 
 /**
  * Creates a _ProcessSignMetadata_ instruction.
@@ -47,10 +45,9 @@ const processSignMetadataInstructionDiscriminator = [
  * @category generated
  */
 export function createProcessSignMetadataInstruction(
-  accounts: ProcessSignMetadataInstructionAccounts
+  accounts: ProcessSignMetadataInstructionAccounts,
 ) {
-  const { authority, fanout, holdingAccount, metadata, tokenMetadataProgram } =
-    accounts;
+  const { authority, fanout, holdingAccount, metadata, tokenMetadataProgram } = accounts;
 
   const [data] = processSignMetadataStruct.serialize({
     instructionDiscriminator: processSignMetadataInstructionDiscriminator,
@@ -84,9 +81,7 @@ export function createProcessSignMetadataInstruction(
   ];
 
   const ix = new web3.TransactionInstruction({
-    programId: new web3.PublicKey(
-      "hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg"
-    ),
+    programId: new web3.PublicKey('hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg'),
     keys,
     data,
   });

@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from "@solana/web3.js";
-import * as beet from "@metaplex-foundation/beet";
-import * as beetSolana from "@metaplex-foundation/beet-solana";
-import { MembershipModel, membershipModelBeet } from "../types/MembershipModel";
+import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet';
+import * as beetSolana from '@metaplex-foundation/beet-solana';
+import { MembershipModel, membershipModelBeet } from '../types/MembershipModel';
 
 /**
  * Arguments used to create {@link Fanout}
@@ -53,7 +53,7 @@ export class Fanout implements FanoutArgs {
     readonly totalAvailableShares: beet.bignum,
     readonly membershipModel: MembershipModel,
     readonly membershipMint: beet.COption<web3.PublicKey>,
-    readonly totalStakedShares: beet.COption<beet.bignum>
+    readonly totalStakedShares: beet.COption<beet.bignum>,
   ) {}
 
   /**
@@ -73,7 +73,7 @@ export class Fanout implements FanoutArgs {
       args.totalAvailableShares,
       args.membershipModel,
       args.membershipMint,
-      args.totalStakedShares
+      args.totalStakedShares,
     );
   }
 
@@ -81,10 +81,7 @@ export class Fanout implements FanoutArgs {
    * Deserializes the {@link Fanout} from the data of the provided {@link web3.AccountInfo}.
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
-  static fromAccountInfo(
-    accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0
-  ): [Fanout, number] {
+  static fromAccountInfo(accountInfo: web3.AccountInfo<Buffer>, offset = 0): [Fanout, number] {
     return Fanout.deserialize(accountInfo.data, offset);
   }
 
@@ -96,7 +93,7 @@ export class Fanout implements FanoutArgs {
    */
   static async fromAccountAddress(
     connection: web3.Connection,
-    address: web3.PublicKey
+    address: web3.PublicKey,
   ): Promise<Fanout> {
     const accountInfo = await connection.getAccountInfo(address);
     if (accountInfo == null) {
@@ -150,12 +147,9 @@ export class Fanout implements FanoutArgs {
   static async getMinimumBalanceForRentExemption(
     args: FanoutArgs,
     connection: web3.Connection,
-    commitment?: web3.Commitment
+    commitment?: web3.Commitment,
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(
-      Fanout.byteSize(args),
-      commitment
-    );
+    return connection.getMinimumBalanceForRentExemption(Fanout.byteSize(args), commitment);
   }
 
   /**
@@ -174,8 +168,7 @@ export class Fanout implements FanoutArgs {
       bumpSeed: this.bumpSeed,
       accountOwnerBumpSeed: this.accountOwnerBumpSeed,
       totalAvailableShares: this.totalAvailableShares,
-      membershipModel:
-        "MembershipModel." + MembershipModel[this.membershipModel],
+      membershipModel: 'MembershipModel.' + MembershipModel[this.membershipModel],
       membershipMint: this.membershipMint,
       totalStakedShares: this.totalStakedShares,
     };
@@ -193,21 +186,21 @@ export const fanoutBeet = new beet.FixableBeetStruct<
   }
 >(
   [
-    ["accountDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["authority", beetSolana.publicKey],
-    ["name", beet.utf8String],
-    ["accountKey", beetSolana.publicKey],
-    ["totalShares", beet.u64],
-    ["totalMembers", beet.u64],
-    ["totalInflow", beet.u64],
-    ["lastSnapshotAmount", beet.u64],
-    ["bumpSeed", beet.u8],
-    ["accountOwnerBumpSeed", beet.u8],
-    ["totalAvailableShares", beet.u64],
-    ["membershipModel", membershipModelBeet],
-    ["membershipMint", beet.coption(beetSolana.publicKey)],
-    ["totalStakedShares", beet.coption(beet.u64)],
+    ['accountDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['authority', beetSolana.publicKey],
+    ['name', beet.utf8String],
+    ['accountKey', beetSolana.publicKey],
+    ['totalShares', beet.u64],
+    ['totalMembers', beet.u64],
+    ['totalInflow', beet.u64],
+    ['lastSnapshotAmount', beet.u64],
+    ['bumpSeed', beet.u8],
+    ['accountOwnerBumpSeed', beet.u8],
+    ['totalAvailableShares', beet.u64],
+    ['membershipModel', membershipModelBeet],
+    ['membershipMint', beet.coption(beetSolana.publicKey)],
+    ['totalStakedShares', beet.coption(beet.u64)],
   ],
   Fanout.fromArgs,
-  "Fanout"
+  'Fanout',
 );

@@ -5,7 +5,7 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from "@metaplex-foundation/beet";
+import * as beet from '@metaplex-foundation/beet';
 export type AddMemberArgs = {
   shares: beet.bignum;
 };
@@ -15,6 +15,6 @@ export type AddMemberArgs = {
  * @category generated
  */
 export const addMemberArgsBeet = new beet.BeetArgsStruct<AddMemberArgs>(
-  [["shares", beet.u64]],
-  "AddMemberArgs"
+  [['shares', beet.u64]],
+  'AddMemberArgs',
 );

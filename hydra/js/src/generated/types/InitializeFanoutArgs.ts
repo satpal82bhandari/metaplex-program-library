@@ -5,7 +5,7 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from "@metaplex-foundation/beet";
+import * as beet from '@metaplex-foundation/beet';
 export type InitializeFanoutArgs = {
   bumpSeed: number;
   nativeAccountBumpSeed: number;
@@ -17,13 +17,12 @@ export type InitializeFanoutArgs = {
  * @category userTypes
  * @category generated
  */
-export const initializeFanoutArgsBeet =
-  new beet.FixableBeetArgsStruct<InitializeFanoutArgs>(
-    [
-      ["bumpSeed", beet.u8],
-      ["nativeAccountBumpSeed", beet.u8],
-      ["name", beet.utf8String],
-      ["totalShares", beet.u64],
-    ],
-    "InitializeFanoutArgs"
-  );
+export const initializeFanoutArgsBeet = new beet.FixableBeetArgsStruct<InitializeFanoutArgs>(
+  [
+    ['bumpSeed', beet.u8],
+    ['nativeAccountBumpSeed', beet.u8],
+    ['name', beet.utf8String],
+    ['totalShares', beet.u64],
+  ],
+  'InitializeFanoutArgs',
+);

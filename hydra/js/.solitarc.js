@@ -7,8 +7,8 @@ const binaryInstallDir = path.join(__dirname, '.crates');
 
 module.exports = {
   idlGenerator: 'anchor',
-  programName: 'auctioneer',
-  programId: 'neer8g6yJq2mQM6KbnViEDAD4gr3gRZyMMf4F2p3MEh',
+  programName: 'hydra',
+  programId: 'hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg',
   idlDir,
   sdkDir,
   binaryInstallDir,

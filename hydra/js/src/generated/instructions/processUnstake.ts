@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from "@solana/spl-token";
-import * as beet from "@metaplex-foundation/beet";
-import * as web3 from "@solana/web3.js";
+import * as splToken from '@solana/spl-token';
+import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js';
 
 /**
  * @category Instructions
@@ -17,8 +17,8 @@ import * as web3 from "@solana/web3.js";
 const processUnstakeStruct = new beet.BeetArgsStruct<{
   instructionDiscriminator: number[] /* size: 8 */;
 }>(
-  [["instructionDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)]],
-  "ProcessUnstakeInstructionArgs"
+  [['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)]],
+  'ProcessUnstakeInstructionArgs',
 );
 /**
  * Accounts required by the _processUnstake_ instruction
@@ -36,9 +36,7 @@ export type ProcessUnstakeInstructionAccounts = {
   instructions: web3.PublicKey;
 };
 
-const processUnstakeInstructionDiscriminator = [
-  217, 160, 136, 174, 149, 62, 79, 133,
-];
+const processUnstakeInstructionDiscriminator = [217, 160, 136, 174, 149, 62, 79, 133];
 
 /**
  * Creates a _ProcessUnstake_ instruction.
@@ -49,9 +47,7 @@ const processUnstakeInstructionDiscriminator = [
  * @category ProcessUnstake
  * @category generated
  */
-export function createProcessUnstakeInstruction(
-  accounts: ProcessUnstakeInstructionAccounts
-) {
+export function createProcessUnstakeInstruction(accounts: ProcessUnstakeInstructionAccounts) {
   const {
     member,
     fanout,
@@ -114,9 +110,7 @@ export function createProcessUnstakeInstruction(
   ];
 
   const ix = new web3.TransactionInstruction({
-    programId: new web3.PublicKey(
-      "hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg"
-    ),
+    programId: new web3.PublicKey('hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg'),
     keys,
     data,
   });

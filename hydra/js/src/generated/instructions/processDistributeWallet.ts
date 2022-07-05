@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from "@solana/spl-token";
-import * as beet from "@metaplex-foundation/beet";
-import * as web3 from "@solana/web3.js";
+import * as splToken from '@solana/spl-token';
+import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js';
 
 /**
  * @category Instructions
@@ -28,10 +28,10 @@ const processDistributeWalletStruct = new beet.BeetArgsStruct<
   }
 >(
   [
-    ["instructionDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["distributeForMint", beet.bool],
+    ['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['distributeForMint', beet.bool],
   ],
-  "ProcessDistributeWalletInstructionArgs"
+  'ProcessDistributeWalletInstructionArgs',
 );
 /**
  * Accounts required by the _processDistributeWallet_ instruction
@@ -51,9 +51,7 @@ export type ProcessDistributeWalletInstructionAccounts = {
   fanoutMintMemberTokenAccount: web3.PublicKey;
 };
 
-const processDistributeWalletInstructionDiscriminator = [
-  252, 168, 167, 66, 40, 201, 182, 163,
-];
+const processDistributeWalletInstructionDiscriminator = [252, 168, 167, 66, 40, 201, 182, 163];
 
 /**
  * Creates a _ProcessDistributeWallet_ instruction.
@@ -67,7 +65,7 @@ const processDistributeWalletInstructionDiscriminator = [
  */
 export function createProcessDistributeWalletInstruction(
   accounts: ProcessDistributeWalletInstructionAccounts,
-  args: ProcessDistributeWalletInstructionArgs
+  args: ProcessDistributeWalletInstructionArgs,
 ) {
   const {
     payer,
@@ -149,9 +147,7 @@ export function createProcessDistributeWalletInstruction(
   ];
 
   const ix = new web3.TransactionInstruction({
-    programId: new web3.PublicKey(
-      "hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg"
-    ),
+    programId: new web3.PublicKey('hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg'),
     keys,
     data,
   });

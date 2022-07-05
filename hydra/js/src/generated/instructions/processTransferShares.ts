@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from "@metaplex-foundation/beet";
-import * as web3 from "@solana/web3.js";
+import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js';
 
 /**
  * @category Instructions
@@ -27,10 +27,10 @@ const processTransferSharesStruct = new beet.BeetArgsStruct<
   }
 >(
   [
-    ["instructionDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["shares", beet.u64],
+    ['instructionDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['shares', beet.u64],
   ],
-  "ProcessTransferSharesInstructionArgs"
+  'ProcessTransferSharesInstructionArgs',
 );
 /**
  * Accounts required by the _processTransferShares_ instruction
@@ -47,9 +47,7 @@ export type ProcessTransferSharesInstructionAccounts = {
   toMembershipAccount: web3.PublicKey;
 };
 
-const processTransferSharesInstructionDiscriminator = [
-  195, 175, 36, 50, 101, 22, 28, 87,
-];
+const processTransferSharesInstructionDiscriminator = [195, 175, 36, 50, 101, 22, 28, 87];
 
 /**
  * Creates a _ProcessTransferShares_ instruction.
@@ -63,16 +61,10 @@ const processTransferSharesInstructionDiscriminator = [
  */
 export function createProcessTransferSharesInstruction(
   accounts: ProcessTransferSharesInstructionAccounts,
-  args: ProcessTransferSharesInstructionArgs
+  args: ProcessTransferSharesInstructionArgs,
 ) {
-  const {
-    authority,
-    fromMember,
-    toMember,
-    fanout,
-    fromMembershipAccount,
-    toMembershipAccount,
-  } = accounts;
+  const { authority, fromMember, toMember, fanout, fromMembershipAccount, toMembershipAccount } =
+    accounts;
 
   const [data] = processTransferSharesStruct.serialize({
     instructionDiscriminator: processTransferSharesInstructionDiscriminator,
@@ -112,9 +104,7 @@ export function createProcessTransferSharesInstruction(
   ];
 
   const ix = new web3.TransactionInstruction({
-    programId: new web3.PublicKey(
-      "hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg"
-    ),
+    programId: new web3.PublicKey('hyDQ4Nz1eYyegS6JfenyKwKzYxRsCWCriYSAjtzP4Vg'),
     keys,
     data,
   });

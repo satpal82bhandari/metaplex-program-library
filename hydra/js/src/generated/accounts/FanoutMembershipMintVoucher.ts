@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from "@solana/web3.js";
-import * as beet from "@metaplex-foundation/beet";
-import * as beetSolana from "@metaplex-foundation/beet-solana";
+import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet';
+import * as beetSolana from '@metaplex-foundation/beet-solana';
 
 /**
  * Arguments used to create {@link FanoutMembershipMintVoucher}
@@ -21,9 +21,7 @@ export type FanoutMembershipMintVoucherArgs = {
   bumpSeed: number;
 };
 
-const fanoutMembershipMintVoucherDiscriminator = [
-  185, 33, 118, 173, 147, 114, 126, 181,
-];
+const fanoutMembershipMintVoucherDiscriminator = [185, 33, 118, 173, 147, 114, 126, 181];
 /**
  * Holds the data for the {@link FanoutMembershipMintVoucher} Account and provides de/serialization
  * functionality for that data
@@ -31,14 +29,12 @@ const fanoutMembershipMintVoucherDiscriminator = [
  * @category Accounts
  * @category generated
  */
-export class FanoutMembershipMintVoucher
-  implements FanoutMembershipMintVoucherArgs
-{
+export class FanoutMembershipMintVoucher implements FanoutMembershipMintVoucherArgs {
   private constructor(
     readonly fanout: web3.PublicKey,
     readonly fanoutMint: web3.PublicKey,
     readonly lastInflow: beet.bignum,
-    readonly bumpSeed: number
+    readonly bumpSeed: number,
   ) {}
 
   /**
@@ -49,7 +45,7 @@ export class FanoutMembershipMintVoucher
       args.fanout,
       args.fanoutMint,
       args.lastInflow,
-      args.bumpSeed
+      args.bumpSeed,
     );
   }
 
@@ -59,7 +55,7 @@ export class FanoutMembershipMintVoucher
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0
+    offset = 0,
   ): [FanoutMembershipMintVoucher, number] {
     return FanoutMembershipMintVoucher.deserialize(accountInfo.data, offset);
   }
@@ -72,13 +68,11 @@ export class FanoutMembershipMintVoucher
    */
   static async fromAccountAddress(
     connection: web3.Connection,
-    address: web3.PublicKey
+    address: web3.PublicKey,
   ): Promise<FanoutMembershipMintVoucher> {
     const accountInfo = await connection.getAccountInfo(address);
     if (accountInfo == null) {
-      throw new Error(
-        `Unable to find FanoutMembershipMintVoucher account at ${address}`
-      );
+      throw new Error(`Unable to find FanoutMembershipMintVoucher account at ${address}`);
     }
     return FanoutMembershipMintVoucher.fromAccountInfo(accountInfo, 0)[0];
   }
@@ -87,10 +81,7 @@ export class FanoutMembershipMintVoucher
    * Deserializes the {@link FanoutMembershipMintVoucher} from the provided data Buffer.
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
-  static deserialize(
-    buf: Buffer,
-    offset = 0
-  ): [FanoutMembershipMintVoucher, number] {
+  static deserialize(buf: Buffer, offset = 0): [FanoutMembershipMintVoucher, number] {
     return fanoutMembershipMintVoucherBeet.deserialize(buf, offset);
   }
 
@@ -121,11 +112,11 @@ export class FanoutMembershipMintVoucher
    */
   static async getMinimumBalanceForRentExemption(
     connection: web3.Connection,
-    commitment?: web3.Commitment
+    commitment?: web3.Commitment,
   ): Promise<number> {
     return connection.getMinimumBalanceForRentExemption(
       FanoutMembershipMintVoucher.byteSize,
-      commitment
+      commitment,
     );
   }
 
@@ -162,12 +153,12 @@ export const fanoutMembershipMintVoucherBeet = new beet.BeetStruct<
   }
 >(
   [
-    ["accountDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["fanout", beetSolana.publicKey],
-    ["fanoutMint", beetSolana.publicKey],
-    ["lastInflow", beet.u64],
-    ["bumpSeed", beet.u8],
+    ['accountDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['fanout', beetSolana.publicKey],
+    ['fanoutMint', beetSolana.publicKey],
+    ['lastInflow', beet.u64],
+    ['bumpSeed', beet.u8],
   ],
   FanoutMembershipMintVoucher.fromArgs,
-  "FanoutMembershipMintVoucher"
+  'FanoutMembershipMintVoucher',
 );

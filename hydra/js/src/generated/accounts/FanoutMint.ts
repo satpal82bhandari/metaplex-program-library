@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from "@solana/web3.js";
-import * as beet from "@metaplex-foundation/beet";
-import * as beetSolana from "@metaplex-foundation/beet-solana";
+import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet';
+import * as beetSolana from '@metaplex-foundation/beet-solana';
 
 /**
  * Arguments used to create {@link FanoutMint}
@@ -38,7 +38,7 @@ export class FanoutMint implements FanoutMintArgs {
     readonly tokenAccount: web3.PublicKey,
     readonly totalInflow: beet.bignum,
     readonly lastSnapshotAmount: beet.bignum,
-    readonly bumpSeed: number
+    readonly bumpSeed: number,
   ) {}
 
   /**
@@ -51,7 +51,7 @@ export class FanoutMint implements FanoutMintArgs {
       args.tokenAccount,
       args.totalInflow,
       args.lastSnapshotAmount,
-      args.bumpSeed
+      args.bumpSeed,
     );
   }
 
@@ -59,10 +59,7 @@ export class FanoutMint implements FanoutMintArgs {
    * Deserializes the {@link FanoutMint} from the data of the provided {@link web3.AccountInfo}.
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
-  static fromAccountInfo(
-    accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0
-  ): [FanoutMint, number] {
+  static fromAccountInfo(accountInfo: web3.AccountInfo<Buffer>, offset = 0): [FanoutMint, number] {
     return FanoutMint.deserialize(accountInfo.data, offset);
   }
 
@@ -74,7 +71,7 @@ export class FanoutMint implements FanoutMintArgs {
    */
   static async fromAccountAddress(
     connection: web3.Connection,
-    address: web3.PublicKey
+    address: web3.PublicKey,
   ): Promise<FanoutMint> {
     const accountInfo = await connection.getAccountInfo(address);
     if (accountInfo == null) {
@@ -118,12 +115,9 @@ export class FanoutMint implements FanoutMintArgs {
    */
   static async getMinimumBalanceForRentExemption(
     connection: web3.Connection,
-    commitment?: web3.Commitment
+    commitment?: web3.Commitment,
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(
-      FanoutMint.byteSize,
-      commitment
-    );
+    return connection.getMinimumBalanceForRentExemption(FanoutMint.byteSize, commitment);
   }
 
   /**
@@ -161,14 +155,14 @@ export const fanoutMintBeet = new beet.BeetStruct<
   }
 >(
   [
-    ["accountDiscriminator", beet.uniformFixedSizeArray(beet.u8, 8)],
-    ["mint", beetSolana.publicKey],
-    ["fanout", beetSolana.publicKey],
-    ["tokenAccount", beetSolana.publicKey],
-    ["totalInflow", beet.u64],
-    ["lastSnapshotAmount", beet.u64],
-    ["bumpSeed", beet.u8],
+    ['accountDiscriminator', beet.uniformFixedSizeArray(beet.u8, 8)],
+    ['mint', beetSolana.publicKey],
+    ['fanout', beetSolana.publicKey],
+    ['tokenAccount', beetSolana.publicKey],
+    ['totalInflow', beet.u64],
+    ['lastSnapshotAmount', beet.u64],
+    ['bumpSeed', beet.u8],
   ],
   FanoutMint.fromArgs,
-  "FanoutMint"
+  'FanoutMint',
 );
