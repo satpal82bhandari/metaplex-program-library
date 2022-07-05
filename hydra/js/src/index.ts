@@ -29,6 +29,7 @@ import {
   createProcessDistributeWalletInstruction,
   createProcessInitForMintInstruction,
   createProcessInitInstruction,
+  createProcessRemoveMemberInstruction,
   createProcessSetForTokenMemberStakeInstruction,
   createProcessSetTokenMemberStakeInstruction,
   createProcessSignMetadataInstruction,
@@ -1136,26 +1137,26 @@ export class FanoutClient {
     };
   }
 
-  // async removeMemberInstructions(opts: RemoveMemberArgs): Promise<InstructionResult<{}>> {
-  //   const instructions: TransactionInstruction[] = [];
-  //   const signers: Signer[] = [];
-  //   const [voucher, f_mvb] = await FanoutClient.membershipVoucher(opts.fanout, opts.member);
+  async removeMemberInstructions(opts: RemoveMemberArgs): Promise<InstructionResult<{}>> {
+    const instructions: TransactionInstruction[] = [];
+    const signers: Signer[] = [];
+    const [voucher, f_mvb] = await FanoutClient.membershipVoucher(opts.fanout, opts.member);
 
-  //   instructions.push(
-  //     createProcessRemoveMemberInstruction({
-  //       fanout: opts.fanout,
-  //       member: opts.member,
-  //       membershipAccount: voucher,
-  //       authority: this.wallet.publicKey,
-  //       destination: opts.destination,
-  //     }),
-  //   );
-  //   return {
-  //     output: {},
-  //     instructions,
-  //     signers,
-  //   };
-  // }
+    instructions.push(
+      createProcessRemoveMemberInstruction({
+        fanout: opts.fanout,
+        member: opts.member,
+        membershipAccount: voucher,
+        authority: this.wallet.publicKey,
+        destination: opts.destination,
+      }),
+    );
+    return {
+      output: {},
+      instructions,
+      signers,
+    };
+  }
 
   async initializeFanout(
     opts: InitializeFanoutArgs,
@@ -1203,15 +1204,15 @@ export class FanoutClient {
     return output;
   }
 
-  // async removeMember(opts: RemoveMemberArgs) {
-  //   const {
-  //     instructions: remove_ix,
-  //     signers: remove_signers,
-  //     output,
-  //   } = await this.removeMemberInstructions(opts);
-  //   await this.throwingSend([...remove_ix], [...remove_signers], this.wallet.publicKey);
-  //   return output;
-  // }
+  async removeMember(opts: RemoveMemberArgs) {
+    const {
+      instructions: remove_ix,
+      signers: remove_signers,
+      output,
+    } = await this.removeMemberInstructions(opts);
+    await this.throwingSend([...remove_ix], [...remove_signers], this.wallet.publicKey);
+    return output;
+  }
 
   async transferShares(opts: TransferSharesArgs) {
     const data = await this.fetch<Fanout>(opts.fanout, Fanout);
