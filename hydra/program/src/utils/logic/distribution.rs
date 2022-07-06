@@ -59,7 +59,7 @@ pub fn distribute_mint<'info>(
     let fanout_mint_member_token_account_info = fanout_mint_member_token_account.to_account_info();
     let fanout_for_mint = fanout_for_mint;
     let total_shares = fanout.total_shares as u64;
-    assert_owned_by(&fanout_for_mint, &crate::ID)?;
+    assert_owned_by(fanout_for_mint, &crate::ID)?;
     assert_owned_by(&fanout_mint_member_token_account_info, &Token::id())?;
     assert_owned_by(holding_account, &anchor_spl::token::Token::id())?;
     assert_ata(

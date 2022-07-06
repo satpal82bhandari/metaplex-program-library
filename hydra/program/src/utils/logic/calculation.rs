@@ -23,10 +23,7 @@ pub fn calculate_dist_amount(
     Ok(dist_amount as u64)
 }
 
-pub fn update_fanout_for_add(
-    fanout: &mut Account<Fanout>,
-    shares: u64,
-) -> Result<()> {
+pub fn update_fanout_for_add(fanout: &mut Account<Fanout>, shares: u64) -> Result<()> {
     let less_shares = fanout
         .total_available_shares
         .checked_sub(shares)
@@ -40,9 +37,7 @@ pub fn update_fanout_for_add(
     }
 }
 
-pub fn update_fanout_for_remove(
-    fanout: &mut Account<Fanout>,
-) -> Result<()> {
+pub fn update_fanout_for_remove(fanout: &mut Account<Fanout>) -> Result<()> {
     fanout.total_members = fanout.total_members.checked_sub(1).or_arith_error()?;
     Ok(())
 }
@@ -130,5 +125,5 @@ pub fn current_lamports(
     let subtract_size = rent.minimum_balance(size).max(1);
     holding_account_lamports
         .checked_sub(subtract_size)
-        .ok_or(HydraError::NumericalOverflow.into())
+        .ok_or_else(|| HydraError::NumericalOverflow.into())
 }

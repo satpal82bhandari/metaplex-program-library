@@ -4,8 +4,6 @@ use crate::state::{Fanout, FanoutMembershipVoucher};
 use crate::MembershipModel;
 use anchor_lang::prelude::*;
 
-
-
 #[derive(Accounts)]
 #[instruction(shares: u64)]
 pub struct TransferShares<'info> {

@@ -2,10 +2,10 @@ use crate::error::HydraError;
 use crate::state::{Fanout, MembershipModel};
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::instruction::Instruction;
+use anchor_lang::solana_program::program_memory::sol_memcmp;
+use anchor_lang::solana_program::pubkey::PUBKEY_BYTES;
 use anchor_spl::token::TokenAccount;
 use mpl_token_metadata::state::Metadata;
-use anchor_lang::solana_program::program_memory::{sol_memcmp};
-use anchor_lang::solana_program::pubkey::PUBKEY_BYTES;
 
 pub fn cmp_pubkeys(a: &Pubkey, b: &Pubkey) -> bool {
     sol_memcmp(a.as_ref(), b.as_ref(), PUBKEY_BYTES) == 0
@@ -17,12 +17,11 @@ pub fn assert_derivation(
     path: &[&[u8]],
     error: Option<error::Error>,
 ) -> Result<u8> {
-    let (key, bump) = Pubkey::find_program_address(&path, program_id);
+    let (key, bump) = Pubkey::find_program_address(path, program_id);
     if !cmp_pubkeys(&key, account.key) {
-        if error.is_some() {
-            let err = error.unwrap();
+        if let Some(err) = error {
             msg!("Derivation {:?}", err);
-            return Err(err.into());
+            return Err(err);
         }
         msg!("DerivedKeyInvalid");
         return Err(HydraError::DerivedKeyInvalid.into());
@@ -38,10 +37,7 @@ pub fn assert_owned_by(account: &AccountInfo, owner: &Pubkey) -> Result<()> {
     }
 }
 
-pub fn assert_membership_model(
-    fanout: &Account<Fanout>,
-    model: MembershipModel,
-) -> Result<()> {
+pub fn assert_membership_model(fanout: &Account<Fanout>, model: MembershipModel) -> Result<()> {
     if fanout.membership_model != model {
         return Err(HydraError::InvalidMembershipModel.into());
     }
@@ -135,7 +131,6 @@ pub fn assert_owned_by_one(account: &AccountInfo, owners: Vec<&Pubkey>) -> Resul
     }
     Err(HydraError::IncorrectOwner.into())
 }
-
 
 #[cfg(test)]
 mod tests {

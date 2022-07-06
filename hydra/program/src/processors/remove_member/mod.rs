@@ -1,2 +1,1 @@
-pub mod remove_member;
-
+pub mod process_remove_member;

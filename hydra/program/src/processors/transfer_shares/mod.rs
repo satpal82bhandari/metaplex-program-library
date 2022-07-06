@@ -1,1 +1,1 @@
-pub mod transfer_shares;
+pub mod process_transfer_shares;
