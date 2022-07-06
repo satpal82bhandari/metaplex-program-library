@@ -1200,6 +1200,7 @@ __metadata:
     eslint: ^8.3.0
     mocha: 9.2.2
     prettier: ^2.5.1
+    rimraf: ^3.0.2
     style-loader: ^2.0.0
     tape: ^5.5.2
     ts-loader: ^9.2.3

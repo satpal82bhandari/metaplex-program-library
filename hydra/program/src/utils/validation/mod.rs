@@ -149,10 +149,10 @@ mod tests {
 
         let e = assert_owned_by_one(&a, vec![&owner, &owner2, &owner1]);
 
-        assert_eq!(e.is_err(), true);
+        assert!(e.is_err());
 
         let e = assert_owned_by_one(&a, vec![&owner, &actual_owner, &owner1]);
 
-        assert_eq!(e.is_ok(), true);
+        assert!(e.is_ok());
     }
 }
