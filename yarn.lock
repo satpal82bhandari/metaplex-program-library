@@ -1084,6 +1084,7 @@ __metadata:
     eslint-plugin-prettier: ^4.0.0
     lerna: ^4.0.0
     prettier: ^2.4.1
+    ts-mocha: ^10.0.0
   languageName: unknown
   linkType: soft
 
@@ -1142,7 +1143,6 @@ __metadata:
   resolution: "@metaplex-foundation/mpl-bubblegum@workspace:bubblegum/js"
   dependencies:
     "@metaplex-foundation/amman": 0.10.0
-    "@metaplex-foundation/mpl-token-metadata": ^2.2.0
     "@metaplex-foundation/rustbin": ^0.3.1
     "@metaplex-foundation/solita": ^0.12.2
     "@project-serum/anchor": 0.24.2
@@ -1293,31 +1293,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@metaplex-foundation/mpl-token-metadata@^2.2.0, @metaplex-foundation/mpl-token-metadata@workspace:token-metadata/js":
-  version: 0.0.0-use.local
-  resolution: "@metaplex-foundation/mpl-token-metadata@workspace:token-metadata/js"
-  dependencies:
-    "@metaplex-foundation/beet": ^0.4.0
-    "@metaplex-foundation/beet-solana": ^0.3.0
-    "@metaplex-foundation/cusper": ^0.0.2
-    "@metaplex-foundation/solita": ^0.12.1
-    "@solana/spl-token": ^0.2.0
-    "@solana/web3.js": ^1.35.1
-    "@types/bn.js": ^5.1.0
-    "@types/debug": ^4.1.7
-    "@types/tape": ^4.13.2
-    bn.js: ^5.2.0
-    cpr: ^3.0.1
-    debug: ^4.3.3
-    eslint: ^8.3.0
-    rimraf: ^3.0.2
-    spok: ^1.4.3
-    supports-color: ^9.2.1
-    tape: ^5.5.3
-    typescript: ^4.6.2
-  languageName: unknown
-  linkType: soft
-
 "@metaplex-foundation/mpl-token-metadata@npm:2.0.0":
   version: 2.0.0
   resolution: "@metaplex-foundation/mpl-token-metadata@npm:2.0.0"
@@ -1344,6 +1319,31 @@ __metadata:
   checksum: 03064927d289cd3de12b238c233cb06ce7476338b7bf203e5c02828048d0e51c438ba90c9151d24c379618270cfcd05cee327ca9dc7b100d1108c4301ad3388b
   languageName: node
   linkType: hard
+
+"@metaplex-foundation/mpl-token-metadata@workspace:token-metadata/js":
+  version: 0.0.0-use.local
+  resolution: "@metaplex-foundation/mpl-token-metadata@workspace:token-metadata/js"
+  dependencies:
+    "@metaplex-foundation/beet": ^0.4.0
+    "@metaplex-foundation/beet-solana": ^0.3.0
+    "@metaplex-foundation/cusper": ^0.0.2
+    "@metaplex-foundation/solita": ^0.12.1
+    "@solana/spl-token": ^0.2.0
+    "@solana/web3.js": ^1.35.1
+    "@types/bn.js": ^5.1.0
+    "@types/debug": ^4.1.7
+    "@types/tape": ^4.13.2
+    bn.js: ^5.2.0
+    cpr: ^3.0.1
+    debug: ^4.3.3
+    eslint: ^8.3.0
+    rimraf: ^3.0.2
+    spok: ^1.4.3
+    supports-color: ^9.2.1
+    tape: ^5.5.3
+    typescript: ^4.6.2
+  languageName: unknown
+  linkType: soft
 
 "@metaplex-foundation/mpl-token-vault@^0.0.2, @metaplex-foundation/mpl-token-vault@workspace:token-vault/js":
   version: 0.0.0-use.local

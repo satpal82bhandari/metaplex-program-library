@@ -2,7 +2,7 @@
   "name": "@metaplex-foundation/mpl-bubblegum",
   "version": "0.0.1",
   "description": "SDK for MPL Bubblegum contract",
-  "main": "dist/src/mpl-bubblegum.js",
+  "main": "src/mpl-bubblegum.ts",
   "types": "dist/src/mpl-bubblegum.d.ts",
   "scripts": {
     "check:publish-ready": "yarn build && yarn test",
@@ -39,7 +39,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@metaplex-foundation/amman": "0.10.0",
-    "@metaplex-foundation/mpl-token-metadata": "^2.2.0",
     "@metaplex-foundation/rustbin": "^0.3.1",
     "@metaplex-foundation/solita": "^0.12.2",
     "@project-serum/anchor": "0.24.2",
