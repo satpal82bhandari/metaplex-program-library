@@ -26,6 +26,8 @@
     "candy-machine/js",
     "fixed-price-sale/js",
     "hydra/js"
+    "bubblegum/js",
+    "candy-wrapper/js"
   ],
   "repository": "git@github.com:metaplex-foundation/metaplex-program-library.git",
   "author": "Metaplex Maintainers <contact@metaplex.com>",

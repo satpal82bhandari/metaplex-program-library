@@ -10,6 +10,8 @@
     "auction-house/js",
     "fixed-price-sale/js",
     "hydra/js"
+    "bubblegum/js",
+    "candy-wrapper/js"
   ],
   "useWorkspaces": true,
   "version": "independent",
