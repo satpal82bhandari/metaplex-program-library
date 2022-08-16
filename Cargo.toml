@@ -13,7 +13,7 @@ exclude = [
   "token-metadata",
   "auction-house/program",
   "candy-machine/program", 
-  "hydra/program"
+  "hydra/program",
   "bubblegum/program",
   "candy-wrapper/program",
 ]
