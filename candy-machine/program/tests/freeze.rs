@@ -407,7 +407,7 @@ async fn mint_out_unfreeze() {
     let freeze_time = MAX_FREEZE_TIME;
     let mut candy_manager = CandyManager::init(
         context,
-        false,
+        None,
         false,
         Some(FreezeConfig::new(true, freeze_time)),
         None,

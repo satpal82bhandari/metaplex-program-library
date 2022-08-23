@@ -29,7 +29,6 @@ pub struct SetCollectionDuringMint<'info> {
     /// CHECK: account checked in CPI
     collection_mint: UncheckedAccount<'info>,
     /// CHECK: account checked in CPI
-    #[account(mut)]
     collection_metadata: UncheckedAccount<'info>,
     /// CHECK: account checked in CPI
     collection_master_edition: UncheckedAccount<'info>,
